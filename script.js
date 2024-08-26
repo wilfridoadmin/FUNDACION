@@ -1,71 +1,58 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const users = {
-        'ADMIN': 'wiljaja22',
-        'MICHELL': '221099'
-    };
-
     const loginForm = document.getElementById('login-form');
-    const dashboard = document.querySelector('.dashboard-container');
-    const logoutButton = document.getElementById('logout');
-    const addPatientForm = document.getElementById('add-patient-form');
-    const patientsList = document.getElementById('patients');
-    const userNameSpan = document.getElementById('user-name');
+    const loginMessage = document.getElementById('login-message');
+    const mainSection = document.getElementById('main-section');
+    const loginSection = document.getElementById('login-section');
+    const logoutButton = document.getElementById('logout-button');
+    const patientForm = document.getElementById('patient-form');
+    const patientList = document.getElementById('patient-list');
+    const motivationalQuote = document.getElementById('motivational-quote');
+    const quotes = [
+        "La mente es todo. Lo que piensas, en eso te conviertes.",
+        "El único modo de hacer un gran trabajo es amar lo que haces.",
+        "La vida es 10% lo que me ocurre y 90% cómo reacciono a ello."
+    ];
 
-    loginForm?.addEventListener('submit', (e) => {
+    function getRandomQuote() {
+        return quotes[Math.floor(Math.random() * quotes.length)];
+    }
+
+    function showSection(section) {
+        loginSection.style.display = section === 'login' ? 'block' : 'none';
+        mainSection.style.display = section === 'main' ? 'block' : 'none';
+    }
+
+    loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-
-        if (users[username] === password) {
-            localStorage.setItem('user', username);
-            window.location.href = 'dashboard.html';
+        
+        if ((username === 'ADMIN' && password === '1234') || (username === 'MICHELL' && password === '221099')) {
+            showSection('main');
+            motivationalQuote.textContent = getRandomQuote();
         } else {
-            alert('Credenciales incorrectas');
+            loginMessage.textContent = 'Usuario o contraseña incorrectos.';
         }
     });
 
-    if (dashboard) {
-        const loggedUser = localStorage.getItem('user');
-        if (loggedUser) {
-            userNameSpan.textContent = loggedUser.charAt(0).toUpperCase() + loggedUser.slice(1);
-        } else {
-            window.location.href = 'index.html';
-        }
+    logoutButton.addEventListener('click', () => {
+        showSection('login');
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+        loginMessage.textContent = '';
+    });
 
-        logoutButton.addEventListener('click', () => {
-            localStorage.removeItem('user');
-            window.location.href = 'index.html';
-        });
+    patientForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const patientName = document.getElementById('patient-name').value;
+        const patientInfo = document.getElementById('patient-info').value;
 
-        addPatientForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const patientName = document.getElementById('patient-name').value;
-            const patientInfo = document.getElementById('patient-info').value;
+        const listItem = document.createElement('li');
+        listItem.textContent = `${patientName}: ${patientInfo}`;
+        patientList.appendChild(listItem);
 
-            let patients = JSON.parse(localStorage.getItem('patients')) || [];
-            const existingPatientIndex = patients.findIndex(patient => patient.name === patientName);
+        patientForm.reset();
+    });
 
-            if (existingPatientIndex >= 0) {
-                patients[existingPatientIndex].info = patientInfo;
-            } else {
-                patients.push({ name: patientName, info: patientInfo });
-            }
-
-            localStorage.setItem('patients', JSON.stringify(patients));
-            displayPatients();
-            addPatientForm.reset();
-        });
-
-        function displayPatients() {
-            const patients = JSON.parse(localStorage.getItem('patients')) || [];
-            patientsList.innerHTML = '';
-            patients.forEach(patient => {
-                const patientItem = document.createElement('li');
-                patientItem.textContent = `${patient.name}: ${patient.info}`;
-                patientsList.appendChild(patientItem);
-            });
-        }
-
-        displayPatients();
-    }
+    showSection('login');
 });
