@@ -1,4 +1,4 @@
-// Simulación de datos de usuario para autenticación
+// Datos simulados para autenticación
 const validUsername = 'trabajador';
 const validPassword = '1234';
 
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const patientDetails = document.getElementById('patientDetails').value;
 
         if (patientName && patientDetails) {
-            const patientListContent = document.getElementById('patientListContent');
+            // Aquí normalmente se enviaría la información al servidor
             const listItem = document.createElement('li');
             listItem.textContent = `${patientName}: ${patientDetails}`;
             patientListContent.appendChild(listItem);
