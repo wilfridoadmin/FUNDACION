@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const users = {
-        'admin': '1234',
-        'michelle': '221099'
+        'ADMIN': 'wiljaja22',
+        'MICHELL': '221099'
     };
 
     const loginForm = document.getElementById('login-form');
