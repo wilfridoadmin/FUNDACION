@@ -43,3 +43,4 @@ function displayPatients() {
 // Mostrar pacientes al cargar
 document.addEventListener('DOMContentLoaded', displayPatients);
 
+
