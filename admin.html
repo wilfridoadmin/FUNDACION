@@ -3,25 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administración - FUNCARTE</title>
+    <title>Funcarte - Dashboard</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Panel de Administración</h1>
-    </header>
-    <section class="admin-panel">
-        <h2>Gestión de Pacientes</h2>
-        <form id="patientForm">
-            <label for="patientName">Nombre del Paciente:</label>
-            <input type="text" id="patientName" required>
-            <label for="patientDetails">Detalles:</label>
-            <textarea id="patientDetails" required></textarea>
-            <button type="submit">Agregar Paciente</button>
-        </form>
-        <h3>Pacientes Registrados:</h3>
-        <ul id="patientList"></ul>
-    </section>
-    <script src="script.js"></script>
+    <div class="dashboard-container">
+        <header>
+            <h1>Gestión de Pacientes</h1>
+        </header>
+        <section id="patientForm">
+            <h2>Agregar Paciente</h2>
+            <form id="addPatientForm">
+                <input type="text" id="patientName" placeholder="Nombre del Paciente" required>
+                <input type="file" id="patientPhoto">
+                <textarea id="patientInfo" placeholder="Información del Paciente"></textarea>
+                <button type="submit">Agregar Paciente</button>
+            </form>
+        </section>
+        <section id="patientList">
+            <h2>Listado de Pacientes</h2>
+            <ul id="patients">
+                <!-- Aquí se mostrarán los pacientes -->
+            </ul>
+        </section>
+    </div>
+    <script src="scripts.js"></script>
 </body>
 </html>
+
