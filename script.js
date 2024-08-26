@@ -1,59 +1,47 @@
-// Función para manejar el inicio de sesión
+// Función para manejar el login
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
     if ((username === 'ADMIN' && password === '1234') || (username === 'MICHELL' && password === '221099')) {
-        window.location.href = 'admin.html';
+        window.location.href = 'dashboard.html';
     } else {
-        document.getElementById('error-message').textContent = 'Usuario o contraseña incorrectos';
+        alert('Usuario o contraseña incorrectos.');
     }
 });
 
-// Arreglo para almacenar pacientes
-const patients = [];
-
-// Función para manejar el formulario de pacientes
-document.getElementById('patientForm')?.addEventListener('submit', function(event) {
+// Función para manejar el registro de pacientes
+document.getElementById('addPatientForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    const name = document.getElementById('patientName').value;
-    const details = document.getElementById('patientDetails').value;
-
-    // Verificar si el paciente ya existe
-    const existingPatientIndex = patients.findIndex(patient => patient.name === name);
-    if (existingPatientIndex >= 0) {
-        // Actualizar información si el paciente ya existe
-        patients[existingPatientIndex].details = details;
-    } else {
-        // Agregar nuevo paciente
-        patients.push({ name, details });
-    }
-
-    updatePatientList();
     
-    document.getElementById('patientName').value = '';
-    document.getElementById('patientDetails').value = '';
+    const name = document.getElementById('patientName').value;
+    const info = document.getElementById('patientInfo').value;
+    const photo = document.getElementById('patientPhoto').files[0];
+    
+    if (name && info) {
+        const patientList = document.getElementById('patients');
+        
+        const listItem = document.createElement('li');
+        listItem.textContent = `Nombre: ${name}, Información: ${info}`;
+        if (photo) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.style.width = '100px';
+                listItem.appendChild(img);
+            };
+            reader.readAsDataURL(photo);
+        }
+        
+        patientList.appendChild(listItem);
+        
+        // Limpiar formulario
+        document.getElementById('addPatientForm').reset();
+    } else {
+        alert('Por favor, completa todos los campos.');
+    }
 });
 
-// Función para actualizar la lista de pacientes
-function updatePatientList() {
-    const list = document.getElementById('patientList');
-    list.innerHTML = '';
-    patients.forEach(patient => {
-        const li = document.createElement('li');
-        li.textContent = `${patient.name}: ${patient.details}`;
-        list.appendChild(li);
-    });
-}
-
-// Llamada a la función de actualización al cargar la página de administración
-if (document.getElementById('patientList')) {
-    updatePatientList();
-}
-
-        li.textContent = `${patient.name}: ${patient.details}`;
-        list.appendChild(li);
-    });
-}
 
