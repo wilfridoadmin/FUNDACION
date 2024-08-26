@@ -9,11 +9,13 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 /* Cabecera */
 header {
-    background: #333;
+    background: #0066cc;
     color: #fff;
     padding: 1rem 0;
     text-align: center;
@@ -47,6 +49,9 @@ main {
     padding: 2rem;
     width: 80%;
     margin: auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 form {
@@ -56,6 +61,7 @@ form {
 label {
     display: block;
     margin-top: 0.5rem;
+    font-weight: bold;
 }
 
 input, textarea {
@@ -68,7 +74,7 @@ input, textarea {
 
 button {
     padding: 0.5rem 1rem;
-    background: #333;
+    background: #0066cc;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -76,7 +82,7 @@ button {
 }
 
 button:hover {
-    background: #555;
+    background: #004999;
 }
 
 /* Pie de página */
@@ -89,3 +95,4 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
