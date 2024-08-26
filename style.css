@@ -2,70 +2,58 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
 }
 
 header {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
     text-align: center;
-    padding: 1em;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 20px;
 }
 
-h1 {
-    margin: 0;
-}
-
-#login-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: #fff;
+.content {
+    background: linear-gradient(to right, #e3f2fd, #bbdefb);
+    padding: 20px;
     text-align: center;
-}
-
-form {
-    background-color: #fff;
-    padding: 1em;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-label {
-    display: block;
-    margin-bottom: .5em;
-}
-
-input, textarea {
-    width: 100%;
-    padding: .5em;
-    margin-bottom: 1em;
-    border: 1px solid #ddd;
-    border-radius: 4px;
 }
 
 button {
-    background-color: #ff7e5f;
+    padding: 10px 20px;
     border: none;
-    color: #fff;
-    padding: .5em 1em;
-    border-radius: 4px;
+    background: #2575fc;
+    color: white;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #feb47b;
+    background: #6a11cb;
 }
 
-#patient-list {
+.login-form, .admin-panel {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#patientList {
     list-style: none;
     padding: 0;
 }
 
-#patient-list li {
-    background: #fff;
-    padding: .5em;
-    margin: .5em 0;
+#patientList li {
+    background: #e3f2fd;
+    margin: 5px 0;
+    padding: 10px;
     border-radius: 4px;
 }
+
