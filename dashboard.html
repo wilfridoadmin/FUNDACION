@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Funcarte</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Panel de Control</h1>
+    </header>
+
+    <section class="dashboard">
+        <h2>Agregar Paciente</h2>
+        <form id="patientForm">
+            <label for="patientName">Nombre del Paciente:</label>
+            <input type="text" id="patientName" name="patientName" required>
+            <label for="patientInfo">Información Adicional:</label>
+            <textarea id="patientInfo" name="patientInfo"></textarea>
+            <button type="submit">Agregar Paciente</button>
+        </form>
+
+        <h2>Pacientes Registrados</h2>
+        <ul id="patientList"></ul>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
